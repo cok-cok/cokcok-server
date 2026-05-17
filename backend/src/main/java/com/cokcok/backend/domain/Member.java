@@ -36,8 +36,12 @@ public class Member {
                 .build();
     }
 
-    public void verifyPassword(String inputPassword, String targetPassword) {
-        if(targetPassword.equals(inputPassword)) {
+    public void login(String password) {
+        verifyPassword(password);
+    }
+
+    private void verifyPassword(String password) {
+        if(this.getPassword().equals(password)) {
             throw new IllegalArgumentException("error message");
         }
     }
