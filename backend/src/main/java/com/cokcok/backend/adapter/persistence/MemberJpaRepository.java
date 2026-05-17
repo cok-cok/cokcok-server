@@ -1,10 +1,20 @@
 package com.cokcok.backend.adapter.persistence;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.cokcok.backend.application.required.MemberRepository;
+import com.cokcok.backend.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+@Repository
+@RequiredArgsConstructor
+public class MemberJpaRepository implements MemberRepository {
 
-public interface MemberJpaRepository extends JpaRepository<MemberEntity, Long> {
+    private final MemberJpaRepositorySupport memberJpaRepositorySupport;
 
-    Optional<MemberEntity> findByEmail(String email);
+    @Override
+    public Member findByEmail(String email) {
+        return memberJpaRepositorySupport.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("error message"))
+                .toModel();
+    }
 }

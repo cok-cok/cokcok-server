@@ -1,7 +1,7 @@
 package com.cokcok.backend.application;
 
-import com.cokcok.backend.adapter.persistence.MemberRepository;
 import com.cokcok.backend.application.provided.AuthCommandService;
+import com.cokcok.backend.application.required.MemberRepository;
 import com.cokcok.backend.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
