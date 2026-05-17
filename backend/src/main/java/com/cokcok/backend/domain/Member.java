@@ -35,4 +35,10 @@ public class Member {
                 .nickname(nickname)
                 .build();
     }
+
+    public void verifyPassword(String inputPassword, String targetPassword) {
+        if(targetPassword.equals(inputPassword)) {
+            throw new IllegalArgumentException("error message");
+        }
+    }
 }

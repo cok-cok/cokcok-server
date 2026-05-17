@@ -14,6 +14,8 @@ public class AuthService implements AuthCommandService {
 
     @Override
     public Member login(String email, String password) {
-        return memberRepository.findByEmail(email);
+        Member member = memberRepository.findByEmail(email);
+        member.verifyPassword(password, member.getPassword());
+        return member;
     }
 }
