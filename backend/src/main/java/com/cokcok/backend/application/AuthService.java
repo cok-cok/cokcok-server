@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     public Member member() {
-        return new Member();
+        return Member.of(1L, "cokcok@gmail.com", "cokcok", "cokcok");
     }
 }
