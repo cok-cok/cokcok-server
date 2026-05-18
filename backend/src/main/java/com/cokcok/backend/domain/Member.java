@@ -1,5 +1,6 @@
 package com.cokcok.backend.domain;
 
+import com.cokcok.backend.domain.exception.LoginFailedException;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,7 +43,7 @@ public class Member {
 
     private void verifyPassword(String password) {
         if(!this.getPassword().equals(password)) {
-            throw new IllegalArgumentException("error message");
+            throw new LoginFailedException();
         }
     }
 }
