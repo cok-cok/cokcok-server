@@ -41,7 +41,7 @@ public class Member {
     }
 
     private void verifyPassword(String password) {
-        if(this.getPassword().equals(password)) {
+        if(!this.getPassword().equals(password)) {
             throw new IllegalArgumentException("error message");
         }
     }
