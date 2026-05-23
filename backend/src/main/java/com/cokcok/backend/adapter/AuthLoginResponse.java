@@ -1,27 +1,23 @@
 package com.cokcok.backend.adapter;
 
-import com.cokcok.backend.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class AuthLoginResponse {
-    private final Long id;
-    private final String nickname;
+    private final MemberGetResponse user;
     private final String accessToken;
 
     @Builder(access = AccessLevel.PRIVATE)
-    public AuthLoginResponse(Long id, String nickname, String accessToken) {
+    public AuthLoginResponse(MemberGetResponse user, String accessToken) {
+        this.user = user;
         this.accessToken = accessToken;
-        this.id = id;
-        this.nickname = nickname;
     }
 
-    public static AuthLoginResponse from(Member member, String accessToken) {
+    public static AuthLoginResponse of(MemberGetResponse user, String accessToken) {
         return AuthLoginResponse.builder()
-                .id(member.getId())
-                .nickname(member.getNickname())
+                .user(user)
                 .accessToken(accessToken)
                 .build();
     }
