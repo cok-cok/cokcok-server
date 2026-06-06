@@ -1,5 +1,6 @@
 package com.cokcok.backend.adapter.integration;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -29,5 +30,37 @@ public class JwtProvider {
                 .expiration(Date.from(Instant.now().plusMillis(DURATION_TIME)))
                 .signWith(secretKey, Jwts.SIG.HS256)
                 .compact();
+    }
+
+    public Claims getClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+    }
+
+    public String getEmail(String token) {
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload().get(CLAIM_EMAIL, String.class);
+    }
+
+    public String getNickname(String token) {
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload().get(CLAIM_NICKNAME, String.class);
+    }
+
+    public Boolean isExpired(String token) {
+        return Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload().getExpiration().after(Date.from(Instant.now()));
     }
 }
