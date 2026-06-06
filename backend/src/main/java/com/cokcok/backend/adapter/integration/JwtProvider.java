@@ -26,7 +26,7 @@ public class JwtProvider {
                 .claim(CLAIM_EMAIL, email)
                 .claim(CLAIM_NICKNAME, nickname)
                 .issuedAt(Date.from(Instant.now()))
-                .expiration(Date.from(Instant.now().minusMillis(DURATION_TIME)))
+                .expiration(Date.from(Instant.now().plusMillis(DURATION_TIME)))
                 .signWith(secretKey, Jwts.SIG.HS256)
                 .compact();
     }
