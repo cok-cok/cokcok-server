@@ -16,12 +16,24 @@ Content-Type: application/json
   "password": "incorrect-cokcok"
 }
 
-### POST - 회원 가입
+### POST - 회원 가입 성공
 POST http://localhost:8080/api/auth/signup
 Content-Type: application/json
 
 {
   "email": "cokcok@gmail.com",
   "password": "cokcok-password",
+  "passwordConfirm": "cokcok-password",
+  "nickname": "cokcok-nickname"
+}
+
+### POST - 회원 가입 실패
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "cokcok@gmail.com",
+  "password": "cokcok-password",
+  "passwordConfirm": "incorrect-password",
   "nickname": "cokcok-nickname"
 }

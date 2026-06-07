@@ -23,7 +23,7 @@ public class AuthService implements AuthCommandService {
 
     @Override
     public Member signUp(AuthSignUpServiceRequest request) {
-        Member member = Member.create(request.getEmail(), request.getPassword(), request.getNickname());
+        Member member = Member.create(request.getEmail(), request.getPassword(), request.getPasswordConfirm(), request.getNickname());
         return memberRepository.save(member);
     }
 }

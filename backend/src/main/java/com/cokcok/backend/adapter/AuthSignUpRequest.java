@@ -9,24 +9,27 @@ import lombok.Getter;
 public class AuthSignUpRequest {
     private final String email;
     private final String password;
+    private final String passwordConfirm;
     private final String nickname;
 
     @Builder(access = AccessLevel.PRIVATE)
-    public AuthSignUpRequest(String email, String password, String nickname) {
+    public AuthSignUpRequest(String email, String password, String passwordConfirm, String nickname) {
         this.email = email;
         this.password = password;
+        this.passwordConfirm = passwordConfirm;
         this.nickname = nickname;
     }
 
-    public static AuthSignUpRequest of(String email, String password, String nickname) {
+    public static AuthSignUpRequest of(String email, String password, String passwordConfirm, String nickname) {
         return AuthSignUpRequest.builder()
                 .email(email)
                 .password(password)
+                .passwordConfirm(passwordConfirm)
                 .nickname(nickname)
                 .build();
     }
 
     public AuthSignUpServiceRequest toServiceRequest() {
-        return AuthSignUpServiceRequest.of(this.email, this.password, this.nickname);
+        return AuthSignUpServiceRequest.of(this.email, this.password, this.passwordConfirm, this.nickname);
     }
 }
