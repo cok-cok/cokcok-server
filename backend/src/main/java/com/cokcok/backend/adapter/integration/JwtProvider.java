@@ -61,6 +61,6 @@ public class JwtProvider {
                 .verifyWith(secretKey)
                 .build()
                 .parseSignedClaims(token)
-                .getPayload().getExpiration().after(Date.from(Instant.now()));
+                .getPayload().getExpiration().before(Date.from(Instant.now()));
     }
 }
