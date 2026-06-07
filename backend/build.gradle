@@ -25,6 +25,10 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	// security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
+
 	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
@@ -40,6 +44,11 @@ dependencies {
 
 	// archunit
 	testImplementation("com.tngtech.archunit:archunit-junit5:1.4.1")
+
+	// jwt
+	implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
 }
 
 tasks.named('test') {

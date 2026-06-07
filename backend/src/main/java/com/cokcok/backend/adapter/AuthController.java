@@ -1,5 +1,6 @@
 package com.cokcok.backend.adapter;
 
+import com.cokcok.backend.adapter.integration.JwtProvider;
 import com.cokcok.backend.application.AuthService;
 import com.cokcok.backend.domain.Member;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+    private final JwtProvider jwtProvider;
 
     @PostMapping("/login")
     public ResponseEntity<AuthLoginResponse> login(@RequestBody AuthLoginRequest request) {
         Member member = authService.login(request.toServiceRequest());
         MemberGetResponse memberGetResponse = MemberGetResponse.from(member);
-        AuthLoginResponse response = AuthLoginResponse.of(memberGetResponse, "accessToken");
+        String accessToken = jwtProvider.createToken(member.getEmail(), member.getNickname());
+        AuthLoginResponse response = AuthLoginResponse.of(memberGetResponse, accessToken);
         return ResponseEntity.ok().body(response);
     }
 }

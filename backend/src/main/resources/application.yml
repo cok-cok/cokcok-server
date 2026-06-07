@@ -21,7 +21,11 @@ spring:
       hibernate:
         format_sql: true
 
+jwt:
+  access:
+    secret: ${JWT_ACCESS_SECRET}
+
 logging:
   level:
     org.hibernate.SQL: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.orm.jdbc.bind: trace
