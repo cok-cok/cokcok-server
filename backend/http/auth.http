@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "email": "cokcok@gmail.com",
-    "password": "cokcok"
+    "password": "cokcok-password"
 }
 
 ### POST - 로그인 실패
@@ -18,3 +18,10 @@ Content-Type: application/json
 
 ### POST - 회원 가입
 POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "cokcok@gmail.com",
+  "password": "cokcok-password",
+  "nickname": "cokcok-nickname"
+}

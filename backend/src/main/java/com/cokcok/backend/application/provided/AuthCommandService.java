@@ -1,11 +1,12 @@
 package com.cokcok.backend.application.provided;
 
 import com.cokcok.backend.application.request.AuthLoginServiceRequest;
+import com.cokcok.backend.application.request.AuthSignUpServiceRequest;
 import com.cokcok.backend.domain.Member;
 
 public interface AuthCommandService {
 
     Member login(AuthLoginServiceRequest request);
 
-    Member signUp(String email, String password, String nickname);
+    Member signUp(AuthSignUpServiceRequest request);
 }

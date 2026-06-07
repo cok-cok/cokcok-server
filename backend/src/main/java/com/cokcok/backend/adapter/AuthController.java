@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
@@ -28,8 +30,9 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signUp() {
-        Member member = authService.signUp("cokcok@gmail.com", "cokcok-password", "cokcok-nickname");
-        return "email: " + member.getEmail() + ", nickname: "+ member.getNickname();
+    public ResponseEntity<AuthSignUpResponse> signUp(@RequestBody AuthSignUpRequest request) {
+        Member member = authService.signUp(request.toServiceRequest());
+        AuthSignUpResponse response = AuthSignUpResponse.of(member);
+        return ResponseEntity.created(URI.create("/api/auth/signup")).body(response);
     }
 }
