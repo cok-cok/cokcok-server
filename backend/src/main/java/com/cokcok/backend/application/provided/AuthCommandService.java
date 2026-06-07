@@ -7,5 +7,5 @@ public interface AuthCommandService {
 
     Member login(AuthLoginServiceRequest request);
 
-    Member signup(String email, String password, String nickname);
+    Member signUp(String email, String password, String nickname);
 }

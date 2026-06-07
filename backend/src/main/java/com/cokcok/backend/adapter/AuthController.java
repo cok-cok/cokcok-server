@@ -28,8 +28,8 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signup() {
-        Member member = authService.signup("cokcok@gmail.com", "cokcok-password", "cokcok-nickname");
+    public String signUp() {
+        Member member = authService.signUp("cokcok@gmail.com", "cokcok-password", "cokcok-nickname");
         return "email: " + member.getEmail() + ", nickname: "+ member.getNickname();
     }
 }
