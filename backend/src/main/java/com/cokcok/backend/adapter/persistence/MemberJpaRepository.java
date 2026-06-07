@@ -18,4 +18,10 @@ public class MemberJpaRepository implements MemberRepository {
                 .orElseThrow(MemberNotFoundException::new)
                 .toModel();
     }
+
+    @Override
+    public Member save(Member member) {
+        return memberJpaRepositorySupport.save(MemberEntity.from(member))
+                .toModel();
+    }
 }

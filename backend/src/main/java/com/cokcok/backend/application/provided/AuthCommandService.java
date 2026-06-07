@@ -6,4 +6,6 @@ import com.cokcok.backend.domain.Member;
 public interface AuthCommandService {
 
     Member login(AuthLoginServiceRequest request);
+
+    Member signup(String email, String password, String nickname);
 }

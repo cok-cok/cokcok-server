@@ -26,4 +26,10 @@ public class AuthController {
         AuthLoginResponse response = AuthLoginResponse.of(memberGetResponse, accessToken);
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/signup")
+    public String signup() {
+        Member member = authService.signup("cokcok@gmail.com", "cokcok-password", "cokcok-nickname");
+        return "email: " + member.getEmail() + ", nickname: "+ member.getNickname();
+    }
 }

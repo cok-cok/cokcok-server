@@ -19,4 +19,10 @@ public class AuthService implements AuthCommandService {
         member.login(request.getPassword());
         return member;
     }
+
+    @Override
+    public Member signup(String email, String password, String nickname) {
+        Member member = Member.create(email, password, nickname);
+        return memberRepository.save(member);
+    }
 }
