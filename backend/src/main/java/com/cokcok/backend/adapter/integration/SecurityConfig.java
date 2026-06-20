@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((url) -> url
                         .requestMatchers("/api/auth/signup").permitAll()
                         .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/members/check-nickname").permitAll()
                         .anyRequest().authenticated());
 
         httpSecurity
