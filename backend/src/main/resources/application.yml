@@ -8,6 +8,18 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
+  mail:
+    host: ${EMAIL_HOST}
+    port: ${EMAIL_PORT}
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   h2:
     console:
       enabled: true
