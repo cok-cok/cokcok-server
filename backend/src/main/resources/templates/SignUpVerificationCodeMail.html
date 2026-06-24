@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title>cokcok 이메일 인증 코드</title>
+</head>
+<body style="margin:0;padding:0;background-color:#FBFAF9;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;color:#111827;-webkit-font-smoothing:antialiased;min-height:100vh;">
+<!-- preheader (inbox preview line) -->
+<div style="display:none;font-size:1px;color:#FBFAF9;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">cokcok 회원가입 인증 코드입니다. 3분 안에 입력해주세요.</div>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#FBFAF9;height:100vh;min-height:100vh;">
+    <tr>
+        <td align="center" valign="middle" style="padding:32px 16px;">
+            <!-- card: fixed 480 width, does NOT shrink on narrow viewport -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="480" style="width:480px;background-color:#FFFFFF;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.05);overflow:hidden;">
+                <!-- brand header -->
+                <tr>
+                    <td align="center" style="padding:40px 32px 8px;">
+                        <img src="data:image/png;base64,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" alt="cokcok" width="140" height="33" style="display:block;width:140px;height:33px;border:0;outline:none;text-decoration:none;">
+                        <div style="font-size:13px;color:#9CA3AF;margin-top:12px;letter-spacing:-0.1px;">내 손 안의 레시피, 콕콕</div>
+                    </td>
+                </tr>
+                <!-- body -->
+                <tr>
+                    <td style="padding:32px 40px 8px;">
+                        <h1 style="margin:0 0 12px;font-size:20px;font-weight:700;color:#111827;letter-spacing:-0.3px;">이메일 인증 코드</h1>
+                        <p style="margin:0 0 24px;font-size:14px;line-height:22px;color:#4B5563;letter-spacing:-0.1px;">
+                            안녕하세요!<br>
+                            아래 6자리 코드를 회원가입 화면에 입력해주세요.
+                        </p>
+                        <!-- code box -->
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#FFF4ED;border-radius:12px;margin:0 0 20px;">
+                            <tr>
+                                <td align="center" style="padding:28px 20px;">
+                                    <div style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:36px;font-weight:800;color:#FD4C06;letter-spacing:12px;line-height:1;padding-left:12px;" th:text="${code}"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- expiry callout -->
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding:14px 16px;background-color:#F9FAFB;border-radius:8px;border-left:3px solid #FD4C06;">
+                                    <p style="margin:0;font-size:13px;line-height:20px;color:#6B7280;letter-spacing:-0.1px;">
+                                        이 코드는 발송 시점부터 <strong style="color:#111827;">3분간</strong> 유효해요. 시간이 지나면 인증 화면에서 다시 요청해주세요.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- disclaimer -->
+                <tr>
+                    <td style="padding:24px 40px 32px;">
+                        <p style="margin:0;font-size:12px;line-height:18px;color:#9CA3AF;letter-spacing:-0.1px;">
+                            본인이 요청하지 않은 메일이라면 누군가 이메일을 잘못 입력했을 수 있어요. 이 메일은 무시하셔도 안전합니다.<br>
+                            혹시 걱정되신다면 <a href="mailto:cokcok.ghw@gmail.com" style="color:#FD4C06;text-decoration:none;font-weight:600;">cokcok.ghw@gmail.com</a> 으로 알려주세요.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <!-- bottom legal/contact (outside card) -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="480" style="width:480px;margin-top:16px;">
+                <tr>
+                    <td align="center" style="padding:8px;">
+                        <p style="margin:0;font-size:11px;line-height:18px;color:#D1D5DB;letter-spacing:-0.1px;">
+                            © cokcok · 문의 <a href="mailto:cokcok.ghw@gmail.com" style="color:#D1D5DB;text-decoration:underline;">cokcok.ghw@gmail.com</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
