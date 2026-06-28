@@ -46,7 +46,11 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
 
-	// db - h2
+	// aws
+	implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:4.0.0")
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-parameter-store'
+
+  // db - h2
 	implementation 'org.springframework.boot:spring-boot-h2console'
 	runtimeOnly 'com.h2database:h2'
 }
