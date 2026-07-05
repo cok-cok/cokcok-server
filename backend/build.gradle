@@ -2,6 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.asciidoctor.jvm.convert' version '4.0.4'
+}
+
+configurations {
+	asciidoctorExt
 }
 
 group = 'com.cokcok'
@@ -15,6 +20,10 @@ java {
 
 repositories {
 	mavenCentral()
+}
+
+ext {
+	snippetsDir = file('build/generated-snippets')
 }
 
 dependencies {
@@ -53,6 +62,32 @@ dependencies {
 	// aws
 	implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:4.0.0")
 	implementation 'io.awspring.cloud:spring-cloud-aws-starter-parameter-store'
+
+	// rest docs
+	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+}
+
+test {
+	outputs.dir snippetsDir
+}
+
+
+asciidoctorj {
+	version = '3.0.0'
+}
+
+asciidoctor {
+	inputs.dir snippetsDir
+	configurations 'asciidoctorExt'
+	dependsOn test
+}
+
+bootJar {
+	dependsOn asciidoctor
+	from ("${asciidoctor.outputDir}") {
+		into 'static/docs'
+	}
 }
 
 tasks.named('test') {
