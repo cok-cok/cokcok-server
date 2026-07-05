@@ -1,0 +1,20 @@
+= 콕콕 REST API 문서
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+
+:operation-request-fields-title: 요청 필드
+:operation-curl-request-title: CURL 요청 예시
+:operation-http-response-title: HTTP 응답 예시
+
+[[resources-auth]]
+== 인증, 인가
+
+[[resources-auth-login]]
+=== 로그인
+`POST`: 아이디와 비밀번호를 통해 서비스에 로그인 할 수 있습니다.
+
+operation::auth-login-success[snippets='request-fields,curl-request,http-response']
+
