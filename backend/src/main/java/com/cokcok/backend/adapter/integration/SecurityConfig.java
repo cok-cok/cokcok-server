@@ -30,6 +30,7 @@ public class SecurityConfig {
 
         httpSecurity
                 .authorizeHttpRequests((url) -> url
+                        .requestMatchers("/docs/api-docs.html").permitAll()
                         .requestMatchers("/api/auth/login").permitAll()
                         .anyRequest().authenticated());
 
