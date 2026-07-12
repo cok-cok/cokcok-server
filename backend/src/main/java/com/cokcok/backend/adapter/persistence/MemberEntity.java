@@ -20,10 +20,10 @@ public class MemberEntity {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password", unique = true, nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "nickname", nullable = false)
+    @Column(name = "nickname", unique = true, nullable = false)
     private String nickname;
 
     @Builder(access = AccessLevel.PRIVATE)
