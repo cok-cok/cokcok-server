@@ -47,9 +47,8 @@ dependencies {
 	// jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	// db - mysql, h2
+	// db - mysql
 	runtimeOnly 'com.mysql:mysql-connector-j'
-	testRuntimeOnly 'com.h2database:h2'
 
 	// archunit
 	testImplementation("com.tngtech.archunit:archunit-junit5:1.4.1")
@@ -66,6 +65,12 @@ dependencies {
 	// rest docs
 	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+	// test containers
+	testImplementation platform("org.testcontainers:testcontainers-bom:2.0.5")
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.testcontainers:testcontainers-junit-jupiter'
+	testImplementation 'org.testcontainers:testcontainers-mysql'
 }
 
 test {
