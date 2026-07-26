@@ -10,8 +10,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.security.SecureRandom;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -36,6 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/login").permitAll()
                         .requestMatchers("/api/members/check-nickname").permitAll()
                         .requestMatchers("/api/mail/auth/verification-code").permitAll()
+                        .requestMatchers("/api/mail/auth/verification-code/confirm").permitAll()
                         .anyRequest().authenticated());
 
         httpSecurity
