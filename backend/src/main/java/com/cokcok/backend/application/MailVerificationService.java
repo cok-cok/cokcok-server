@@ -43,7 +43,6 @@ public class MailVerificationService {
 
         MailVerification mailVerification = MailVerification.create(request.getEmail(), verificationCode);
         mailVerificationRepository.save(mailVerification);
-        System.out.println(verificationCode);
 
         try {
             MimeMessage message = mailSender.createMimeMessage();
