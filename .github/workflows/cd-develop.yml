@@ -42,7 +42,7 @@ jobs:
         working-directory: ${{ vars.WORKING_DIRECTORY }}
         run: |
           chmod +x gradlew
-          ./gradlew clean build
+          DOCS_HOST=${{ secrets.DOCS_HOST }} DOCS_SCHEME=${{ secrets.DOCS_SCHEME }} ./gradlew clean build
           docker build -f Dockerfile -t ${{ secrets.REGISTRY }}/${{ secrets.REPOSITORY }}:${{ steps.image-tag-id.outputs.IMAGE_TAG }} .
           docker push ${{ secrets.REGISTRY }}/${{ secrets.REPOSITORY }}:${{ steps.image-tag-id.outputs.IMAGE_TAG }}
 
