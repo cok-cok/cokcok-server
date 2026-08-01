@@ -73,28 +73,24 @@ dependencies {
 	testImplementation 'org.testcontainers:testcontainers-mysql'
 }
 
-test {
+tasks.named('test') {
+	useJUnitPlatform()
 	outputs.dir snippetsDir
 }
-
 
 asciidoctorj {
 	version = '3.0.0'
 }
 
-asciidoctor {
+tasks.named('asciidoctor') {
 	inputs.dir snippetsDir
 	configurations 'asciidoctorExt'
-	dependsOn test
+	dependsOn tasks.named('test')
 }
 
-bootJar {
-	dependsOn asciidoctor
-	from ("${asciidoctor.outputDir}") {
+tasks.named('bootJar') {
+	dependsOn tasks.named('asciidoctor')
+	from (tasks.named('asciidoctor').get().outputDir) {
 		into 'static/docs'
 	}
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }
