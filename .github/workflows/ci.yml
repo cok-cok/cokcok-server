@@ -1,4 +1,4 @@
-name: CI
+name: ci
  
 on:
   pull_request:
@@ -24,4 +24,4 @@ jobs:
         working-directory: ${{ vars.WORKING_DIRECTORY }}
         run: |
           chmod +x gradlew
-          ./gradlew clean build
+          DOCS_HOST=${{ secrets.DOCS_HOST }} DOCS_SCHEME=${{ secrets.DOCS_SCHEME }} ./gradlew clean build
