@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
@@ -37,6 +38,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayName("인증 컨트롤러 테스트")
 class AuthControllerTest {
 
+    @Value("${docs.scheme}")
+    private String scheme;
+
+    @Value("${docs.host}")
+    private String host;
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -55,7 +62,9 @@ class AuthControllerTest {
     @BeforeEach
     void setUp(RestDocumentationContextProvider restDocumentation) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
-                .apply(documentationConfiguration(restDocumentation))
+                .apply(documentationConfiguration(restDocumentation)
+                        .uris().withScheme(scheme)
+                        .withHost(host))
                 .build();
     }
 
@@ -64,13 +73,13 @@ class AuthControllerTest {
     void serviceLoginPostWithSuccessStatusCodeIs200() throws Exception {
 
         // arrange
-        String email = "cokcok@cokcok.com";
-        String password = "cokcok-password";
+        String email = "cokcok.test@gmail.com";
+        String password = "!Password123";
         AuthLoginRequest request = AuthLoginRequest.of(email, password);
 
         Long expectId = 1L;
-        String expectEmail = "cokcok@cokcok.com";
-        String expectPassword = "cokcok-password";
+        String expectEmail = "cokcok.test@gmail.com";
+        String expectPassword = "!Password123";
         String expectNickname = "cokcok-nickname";
         Member expectMember = Member.of(expectId, expectEmail, expectPassword, expectNickname);
         String expectAccessToken = "aospdjfasdjfl4fwncpamcsbgoawihrbb12nsdvkasb999asdhbsdfhb";
