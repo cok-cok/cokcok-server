@@ -1,6 +1,6 @@
 package com.cokcok.backend.application;
 
-import com.cokcok.backend.adapter.utils.GeneratorUtils;
+import com.cokcok.backend.utils.GeneratorUtils;
 import com.cokcok.backend.application.request.MailVerificationCodeConfirmServiceRequest;
 import com.cokcok.backend.application.request.MailVerificationCodeServiceRequest;
 import com.cokcok.backend.application.required.MailVerificationRepository;

@@ -1,4 +1,4 @@
-package com.cokcok.backend.adapter.utils;
+package com.cokcok.backend.utils;
 
 import org.springframework.stereotype.Component;
 
