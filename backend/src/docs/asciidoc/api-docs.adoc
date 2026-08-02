@@ -36,3 +36,9 @@ operation::members-check-nickname-success[snippets='query-parameters,curl-reques
 `POST`: 인증 가능한 코드를 메일로 전송합니다.
 
 operation::mail-auth-verification-code[snippets='request-fields,curl-request,http-response']
+
+[[resources-mail-auth-verification-code-confirm]]
+=== 인증 코드 검증
+`POST`: 메일로 전송된 인증 코드를 검증합니다.
+
+operation::mail-auth-verification-code-confirm[snippets='request-fields,curl-request,http-response']
