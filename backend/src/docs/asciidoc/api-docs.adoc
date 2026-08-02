@@ -27,3 +27,12 @@ operation::auth-login-success[snippets='request-fields,curl-request,http-respons
 `GET`: 사용하려는 닉네임에 대해 중복 검사가 가능합니다.
 
 operation::members-check-nickname-success[snippets='query-parameters,curl-request,http-response']
+
+[[resources-mail-verification]]
+== 인증 메일
+
+[[resources-mail-auth-verification-code]]
+=== 인증 메일 전송
+`POST`: 인증 가능한 코드를 메일로 전송합니다.
+
+operation::mail-auth-verification-code[snippets='request-fields,curl-request,http-response']
