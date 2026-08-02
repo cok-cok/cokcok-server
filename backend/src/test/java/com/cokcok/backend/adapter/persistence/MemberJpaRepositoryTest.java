@@ -37,8 +37,9 @@ class MemberJpaRepositoryTest {
         // arrange
         String email = "cokcok@cokcok.com";
         String password = "cokcok-password";
+        String passwordConfirm = "cokcok-password";
         String nickname = "cokcok-nickname";
-        Member member = Member.create(email, password, nickname);
+        Member member = Member.create(email, password, passwordConfirm, nickname);
 
         // act
         Member savedMember = memberRepository.save(member);
