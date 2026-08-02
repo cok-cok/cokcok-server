@@ -1,0 +1,7 @@
+### GET - 닉네임 중복 검사 성공
+GET http://localhost:8080/api/members/check-nickname?nickname=cokcok-nickname
+Content-Type: application/json
+
+### GET - 닉네임 중복 검사 실패
+GET http://localhost:8080/api/members/check-nickname?nickname=cokcok-nickname
+Content-Type: application/json

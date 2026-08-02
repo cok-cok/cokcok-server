@@ -71,6 +71,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	testImplementation 'org.testcontainers:testcontainers-junit-jupiter'
 	testImplementation 'org.testcontainers:testcontainers-mysql'
+  
+  // mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	testImplementation 'org.springframework.boot:spring-boot-starter-mail-test'
+
+	// thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
 }
 
 tasks.named('test') {

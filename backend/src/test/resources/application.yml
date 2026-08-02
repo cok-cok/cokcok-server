@@ -12,6 +12,18 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
 
+  mail:
+    host: test
+    port: 123
+    username: test
+    password: test
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 jwt:
   access:
     secret: dGVzdC1qd3Qtc2VjcmV0LWtleS1mb3ItdGVzdGluZy1wdXJwb3Nlcy1vbmx5MTIzNDU2Nzg5MA==

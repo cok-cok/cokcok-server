@@ -1,6 +1,7 @@
 package com.cokcok.backend.domain;
 
 import com.cokcok.backend.domain.exception.LoginFailedException;
+import com.cokcok.backend.domain.exception.PasswordMissMatchException;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,8 @@ public class Member {
         this.nickname = nickname;
     }
 
-    public static Member create(String email, String password, String nickname) {
+    public static Member create(String email, String password, String passwordConfirm, String nickname) {
+        verifyPasswordMatch(password, passwordConfirm);
         return Member.builder()
                 .email(email)
                 .password(password)
@@ -44,6 +46,12 @@ public class Member {
     private void verifyPassword(String password) {
         if(!this.getPassword().equals(password)) {
             throw new LoginFailedException();
+        }
+    }
+
+    private static void verifyPasswordMatch(String password, String passwordConfirm) {
+        if(!password.equals(passwordConfirm)) {
+            throw new PasswordMissMatchException();
         }
     }
 }

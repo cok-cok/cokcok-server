@@ -32,6 +32,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests((url) -> url
                         .requestMatchers("/docs/api-docs.html").permitAll()
                         .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/auth/signup").permitAll()
+                        .requestMatchers("/api/members/check-nickname").permitAll()
+                        .requestMatchers("/api/mail/auth/verification-code").permitAll()
+                        .requestMatchers("/api/mail/auth/verification-code/confirm").permitAll()
                         .anyRequest().authenticated());
 
         httpSecurity

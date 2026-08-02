@@ -2,6 +2,7 @@ package com.cokcok.backend.application;
 
 import com.cokcok.backend.application.provided.AuthCommandService;
 import com.cokcok.backend.application.request.AuthLoginServiceRequest;
+import com.cokcok.backend.application.request.AuthSignUpServiceRequest;
 import com.cokcok.backend.application.required.MemberRepository;
 import com.cokcok.backend.domain.Member;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,11 @@ public class AuthService implements AuthCommandService {
         Member member = memberRepository.findByEmail(request.getEmail());
         member.login(request.getPassword());
         return member;
+    }
+
+    @Override
+    public Member signUp(AuthSignUpServiceRequest request) {
+        Member member = Member.create(request.getEmail(), request.getPassword(), request.getPasswordConfirm(), request.getNickname());
+        return memberRepository.save(member);
     }
 }
