@@ -7,9 +7,11 @@ import com.cokcok.backend.application.required.MemberRepository;
 import com.cokcok.backend.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AuthService implements AuthCommandService {
 
     private final MemberRepository memberRepository;

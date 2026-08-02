@@ -2,6 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.asciidoctor.jvm.convert' version '4.0.4'
+}
+
+configurations {
+	asciidoctorExt
 }
 
 group = 'com.cokcok'
@@ -15,6 +20,10 @@ java {
 
 repositories {
 	mavenCentral()
+}
+
+ext {
+	snippetsDir = file('build/generated-snippets')
 }
 
 dependencies {
@@ -38,9 +47,8 @@ dependencies {
 	// jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	// db - h2
-	implementation 'org.springframework.boot:spring-boot-h2console'
-	runtimeOnly 'com.h2database:h2'
+	// db - mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	// archunit
 	testImplementation("com.tngtech.archunit:archunit-junit5:1.4.1")
@@ -50,7 +58,21 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0'
 
-	// mail
+	// aws
+	implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:4.0.0")
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-parameter-store'
+
+	// rest docs
+	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+	// test containers
+	testImplementation platform("org.testcontainers:testcontainers-bom:2.0.5")
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.testcontainers:testcontainers-junit-jupiter'
+	testImplementation 'org.testcontainers:testcontainers-mysql'
+  
+  // mail
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	testImplementation 'org.springframework.boot:spring-boot-starter-mail-test'
 
@@ -61,4 +83,22 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	outputs.dir snippetsDir
+}
+
+asciidoctorj {
+	version = '3.0.0'
+}
+
+tasks.named('asciidoctor') {
+	inputs.dir snippetsDir
+	configurations 'asciidoctorExt'
+	dependsOn tasks.named('test')
+}
+
+tasks.named('bootJar') {
+	dependsOn tasks.named('asciidoctor')
+	from (tasks.named('asciidoctor').get().outputDir) {
+		into 'static/docs'
+	}
 }

@@ -24,7 +24,7 @@ public class MemberJpaRepository implements MemberRepository {
         return memberJpaRepositorySupport.save(MemberEntity.from(member))
                 .toModel();
     }
-
+  
     @Override
     public boolean existByNickname(String nickname) {
         return memberJpaRepositorySupport.existsByNickname(nickname);
