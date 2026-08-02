@@ -5,6 +5,7 @@
 :toc: left
 :toclevels: 2
 
+:operation-query-parameters-title: 요청 파라미터
 :operation-request-fields-title: 요청 필드
 :operation-curl-request-title: CURL 요청 예시
 :operation-http-response-title: HTTP 응답 예시
@@ -18,3 +19,26 @@
 
 operation::auth-login-success[snippets='request-fields,curl-request,http-response']
 
+[[resources-members]]
+== 회원
+
+[[resources-members-check-nickname]]
+=== 닉네임 중복 검사
+`GET`: 사용하려는 닉네임에 대해 중복 검사가 가능합니다.
+
+operation::members-check-nickname-success[snippets='query-parameters,curl-request,http-response']
+
+[[resources-mail-verification]]
+== 인증 메일
+
+[[resources-mail-auth-verification-code]]
+=== 인증 메일 전송
+`POST`: 인증 가능한 코드를 메일로 전송합니다.
+
+operation::mail-auth-verification-code[snippets='request-fields,curl-request,http-response']
+
+[[resources-mail-auth-verification-code-confirm]]
+=== 인증 코드 검증
+`POST`: 메일로 전송된 인증 코드를 검증합니다.
+
+operation::mail-auth-verification-code-confirm[snippets='request-fields,curl-request,http-response']
